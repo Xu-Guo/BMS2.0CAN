@@ -1,5 +1,5 @@
 src/main.d src/main.o: ../src/main.c ../src/asf.h \
- ../src/ASF/sam0/drivers/can/can.h ../src/ASF/sam0/utils/compiler.h \
+ ../src/ASF/sam0/drivers/adc/adc.h ../src/ASF/sam0/utils/compiler.h \
  d:\atmel\ studio\ 7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\4.9.3\include\stddef.h \
  ../src/ASF/common/utils/parts.h ../src/ASF/sam0/utils/status_codes.h \
  d:\atmel\ studio\ 7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\4.9.3\include\stdint.h \
@@ -125,15 +125,19 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/sam0/drivers/system/pinmux/pinmux.h \
  ../src/ASF/sam0/drivers/system/power/power_sam_c/power.h \
  ../src/ASF/sam0/drivers/system/reset/reset_sam_c/reset.h \
- ../src/config/conf_can.h ../src/ASF/sam0/drivers/events/events.h \
+ ../src/ASF/sam0/drivers/adc/adc_sam_l_c/adc_feature.h \
+ ../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h \
+ ../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samc20_c21/system_interrupt_features.h \
+ ../src/ASF/sam0/drivers/adc/adc_callback.h \
+ ../src/ASF/sam0/drivers/can/can.h ../src/config/conf_can.h \
+ ../src/ASF/sam0/drivers/events/events.h \
  ../src/ASF/sam0/drivers/events/events_common.h \
  ../src/ASF/sam0/drivers/events/events_hooks.h \
  ../src/ASF/sam0/drivers/events/events.h ../src/ASF/common/boards/board.h \
  ../src/ASF/sam0/boards/samc21_xplained_pro/samc21_xplained_pro.h \
- ../src/config/conf_board.h ../src/ASF/sam0/drivers/port/port.h \
+ ../src/config/conf_board.h ../src/ASF/sam0/drivers/nvm/nvm.h \
+ ../src/ASF/sam0/drivers/port/port.h \
  ../src/ASF/sam0/drivers/rtc/rtc_calendar.h ../src/config/conf_clocks.h \
- ../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h \
- ../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samc20_c21/system_interrupt_features.h \
  ../src/ASF/sam0/drivers/rtc/rtc_calendar_interrupt.h \
  ../src/ASF/sam0/drivers/rtc/rtc_calendar.h \
  ../src/ASF/sam0/drivers/rtc/rtc_tamper.h \
@@ -149,14 +153,14 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/common/services/serial/sam0_usart/usart_serial.h \
  ../src/ASF/sam0/drivers/tcc/tcc.h \
  ../src/ASF/sam0/drivers/tcc/tcc_callback.h \
- ../src/ASF/sam0/drivers/tcc/tcc.h \
+ ../src/ASF/sam0/drivers/tcc/tcc.h ../src/ASF/sam0/drivers/tsens/tsens.h \
  d:\atmel\ studio\ 7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
  d:\atmel\ studio\ 7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
  ../src/sys_event_interrupt_hook.h
 
 ../src/asf.h:
 
-../src/ASF/sam0/drivers/can/can.h:
+../src/ASF/sam0/drivers/adc/adc.h:
 
 ../src/ASF/sam0/utils/compiler.h:
 
@@ -412,6 +416,16 @@ d:\atmel\ studio\ 7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\al
 
 ../src/ASF/sam0/drivers/system/reset/reset_sam_c/reset.h:
 
+../src/ASF/sam0/drivers/adc/adc_sam_l_c/adc_feature.h:
+
+../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h:
+
+../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samc20_c21/system_interrupt_features.h:
+
+../src/ASF/sam0/drivers/adc/adc_callback.h:
+
+../src/ASF/sam0/drivers/can/can.h:
+
 ../src/config/conf_can.h:
 
 ../src/ASF/sam0/drivers/events/events.h:
@@ -428,15 +442,13 @@ d:\atmel\ studio\ 7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\al
 
 ../src/config/conf_board.h:
 
+../src/ASF/sam0/drivers/nvm/nvm.h:
+
 ../src/ASF/sam0/drivers/port/port.h:
 
 ../src/ASF/sam0/drivers/rtc/rtc_calendar.h:
 
 ../src/config/conf_clocks.h:
-
-../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h:
-
-../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samc20_c21/system_interrupt_features.h:
 
 ../src/ASF/sam0/drivers/rtc/rtc_calendar_interrupt.h:
 
@@ -469,6 +481,8 @@ d:\atmel\ studio\ 7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\al
 ../src/ASF/sam0/drivers/tcc/tcc_callback.h:
 
 ../src/ASF/sam0/drivers/tcc/tcc.h:
+
+../src/ASF/sam0/drivers/tsens/tsens.h:
 
 d:\atmel\ studio\ 7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
 

@@ -2,9 +2,17 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\sam0\drivers\adc\adc_sam_l_c\adc.c
+
+src\ASF\sam0\drivers\adc\adc_sam_l_c\adc_callback.c
+
+src\ASF\sam0\drivers\nvm\nvm.c
+
 src\ASF\sam0\drivers\rtc\rtc_sam_l_c\rtc_calendar.c
 
 src\ASF\sam0\drivers\rtc\rtc_sam_l_c\rtc_calendar_interrupt.c
+
+src\ASF\sam0\drivers\tsens\tsens.c
 
 src\main.c
 

@@ -55,7 +55,6 @@
 #include <conf_can.h>
 #include "sys_event_interrupt_hook.h"
 
-//! [module_var]
 
 //! [module_inst]
 static struct usart_module cdc_instance;
@@ -69,8 +68,10 @@ static struct can_module can_instance;
 void configure_rtc_calendar(void);
 void rtc_match_callback(void);
 void configure_rtc_callbacks(void);
+void configure_tsens(void);
+
 
-
+//! [module_var]
 //! [can_filter_setting]
 #define CAN_RX_STANDARD_FILTER_INDEX_0    0
 #define CAN_RX_STANDARD_FILTER_INDEX_1    1
@@ -97,6 +98,10 @@ static struct can_rx_element_fifo_0 rx_element_fifo_0;
 static struct can_rx_element_fifo_1 rx_element_fifo_1;
 static struct can_rx_element_buffer rx_element_buffer;
 //! [can_receive_message_setting]
+
+//![temperature result]
+int32_t temp_result;
+
 
 //! [module_var]
 
@@ -375,8 +380,9 @@ void event_counter(struct events_resource *resource)
 {
 	if(events_is_interrupt_set(resource, EVENTS_INTERRUPT_DETECT)) {
 		port_pin_toggle_output_level(LED_0_PIN);
-		printf("@@@@@@@@@@@@@@@@@@@@@@@@@ event success @@@@@@@@@@@@@@@@@@@@@@@@ \r\n");
+		//printf("@@@@@@@@@@@@@@@@@@@@@@@@@ event success @@@@@@@@@@@@@@@@@@@@@@@@ \r\n");
 		event_count++;
+		
 		events_ack_interrupt(resource, EVENTS_INTERRUPT_DETECT);
 	}
 }//! ******************************************* [SYSTEM EVENT END] *******************************************
@@ -413,7 +419,15 @@ void configure_rtc_calendar(void)
 }struct rtc_calendar_alarm_time alarm;void rtc_match_callback(void)
 {
 	/* Do something on RTC alarm match here */
-	printf("******************** alarm success !!!******************** \r\n");
+	//printf("###### alarm ######\r\n");
+	
+	tsens_start_conversion();
+	do {
+		/* Wait for conversion to be done and read out temperature result */
+	} while (tsens_read(&temp_result) != STATUS_OK);
+	printf("temperature :" );
+	printf("%ld \r\n", temp_result);
+	
 	/* Set new alarm in 5 seconds */
 	alarm.mask = RTC_CALENDAR_ALARM_MASK_SEC;
 	alarm.time.second += 5;
@@ -425,7 +439,23 @@ void configure_rtc_calendar(void)
 	rtc_calendar_register_callback(&rtc_instance, rtc_match_callback, RTC_CALENDAR_CALLBACK_ALARM_0);
 	rtc_calendar_enable_callback(&rtc_instance, RTC_CALENDAR_CALLBACK_ALARM_0);
 }
-//! //! ******************************************* [RTC CONFIG END] *******************************************
+//! ******************************************* [RTC CONFIG END] *******************************************
+
+
+
+/************************************************************************/
+/* config temperature sensor                                            */
+/************************************************************************/
+
+void configure_tsens(void)
+{
+	struct tsens_config config_tsens;
+	tsens_get_config_defaults(&config_tsens);
+	tsens_init(&config_tsens);
+	tsens_enable();
+}
+
+
 
 //! [setup]
 
@@ -447,7 +477,7 @@ int main(void)
 
 
 	
-//! setup event and call back function
+//! setup system event and call back function
 	configure_event_channel(&example_event);
 	configure_event_user(&example_event);
 	configure_event_interrupt(&example_event, &hook);
@@ -456,8 +486,9 @@ int main(void)
 	configure_rtc_calendar();
 	configure_rtc_callbacks();
 	rtc_calendar_enable(&rtc_instance);
-	
-
+
+//!config temperature sensor
+	configure_tsens();
 
 //! [configure_can]
 	configure_can();

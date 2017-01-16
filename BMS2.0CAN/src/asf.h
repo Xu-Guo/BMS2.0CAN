@@ -52,6 +52,10 @@
  * running the ASF driver selector tool. Any changes will be discarded.
  */
 
+// From module: ADC - Analog-to-Digital Converter (Callback APIs)
+#include <adc.h>
+#include <adc_callback.h>
+
 // From module: CAN - Control Area Network Controller
 #include <can.h>
 
@@ -70,6 +74,9 @@
 
 // From module: Interrupt management - SAM implementation
 #include <interrupt.h>
+
+// From module: NVM - Non-Volatile Memory
+#include <nvm.h>
 
 // From module: PORT - GPIO Pin Control
 #include <port.h>
@@ -115,6 +122,9 @@
 // From module: TCC - Timer Counter for Control Applications (Callback APIs)
 #include <tcc.h>
 #include <tcc_callback.h>
+
+// From module: TSENS - Temperature Sensor (Polled APIs)
+#include <tsens.h>
 
 // From module: USART - Serial interface- SAM implementation for devices with only USART
 #include <serial.h>
